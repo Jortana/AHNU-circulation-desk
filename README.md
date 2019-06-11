@@ -38,58 +38,52 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 
 ### 数据库物理结构设计
 
-#### 1.读者信息表（Reader）
+#### 1.用户信息表（User）
 
-| 名字    | 数据类型 | 是否为空 | 键  | 说明       |
-| ------- | -------- | -------- | --- | ---------- |
-| UID     | int      | NO       | PRI | 用户编号   |
-| UName   | char(20) | NO       |     | 用户姓名   |
-| USex    | char(4)  | NO       |     | 性别       |
-| UGrade  | char(10) | NO       |     | 年级       |
-| UPro    | char(50) | NO       |     | 专业       |
-| PunTime | int      | NO       |     | 被处罚次数 |
-| Inter   | int      | NO       |     | 诚信度     |
+| 名字      | 数据类型     | 是否为空 | 键  | 说明     |
+| --------- | ------------ | -------- | --- | -------- |
+| user_ID   | int          | NO       | PRI | 用户编号 |
+| user_pass | varchar(255) | NO       |     | 密码     |
 
-#### 2.图书信息表（Book)
+#### 2.读者信息表（Reader）
 
-| 名字    | 数据类型     | 是否为空 | 键  | 说明     |
-| ------- | ------------ | -------- | --- | -------- |
-| BID     | int          | NO       | PRI | 图书编号 |
-| BName   | varchar(255) | NO       |     | 书名     |
-| BAuthor | varchar(50)  | NO       |     | 作者     |
-| BPub    | varchar(50)  | NO       |     | 出版社   |
-| BCate   | varchar(20)  | NO       |     | 分类     |
-| BDate   | datetime     | NO       |     | 入库时间 |
+| 名字       | 数据类型 | 是否为空 | 键  | 说明       |
+| ---------- | -------- | -------- | --- | ---------- |
+| user_ID    | int      | NO       | PRI | 用户编号   |
+| user_name  | char(20) | NO       |     | 用户姓名   |
+| user_sex   | char(4)  | NO       |     | 性别       |
+| user_grade | char(10) | NO       |     | 年级       |
+| user_Pro   | char(50) | NO       |     | 专业       |
+| pun_time   | int      | NO       |     | 被处罚次数 |
+| inter      | int      | NO       |     | 诚信度     |
 
-#### 3.用户信息表（User）
+#### 3.图书信息表（Book)
 
-| 名字   | 数据类型     | 是否为空 | 键  | 说明     |
-| ------ | ------------ | -------- | --- | -------- |
-| UID    | int          | NO       | PRI | 用户编号 |
-| PASSWD | varchar(255) | NO       |     | 密码     |
+| 名字        | 数据类型     | 是否为空 | 键  | 说明     |
+| ----------- | ------------ | -------- | --- | -------- |
+| book_ID     | int          | NO       | PRI | 图书编号 |
+| book_name   | varchar(255) | NO       |     | 书名     |
+| book_author | varchar(50)  | NO       |     | 作者     |
+| book_pub    | varchar(50)  | NO       |     | 出版社   |
+| book_cate   | varchar(20)  | NO       |     | 分类     |
+| book_date   | datetime     | NO       |     | 入库时间 |
 
 #### 4.图书借还信息表（Borrow）
 
-| 名字    | 数据类型 | 是否为空 | 键  | 说明         |
-| ------- | -------- | -------- | --- | ------------ |
-| UID     | int      | NO       | PRI | 用户编号     |
-| BID     | int      | NO       | PRI | 图书编号     |
-| BrDate  | datetime | NO       |     | 借书时间     |
-| ExpDate | datetime | NO       |     | 预期归还时间 |
+| 名字      | 数据类型 | 是否为空 | 键  | 说明         |
+| --------- | -------- | -------- | --- | ------------ |
+| user_ID   | int      | NO       | PRI | 用户编号     |
+| book_ID   | int      | NO       | PRI | 图书编号     |
+| br_date   | datetime | NO       | PRI | 借书时间     |
+| exp_date  | datetime | NO       |     | 预期归还时间 |
+| act_date  | datetime |          |     | 实际归还时间 |
+| over_date | int      | NO       |     | 超期天数     |
+| penalty   | float    | NO       |     | 处罚金额     |
 
-#### 4.用户处罚信息表（Penalty）
+#### 5.管理员表（Manager）
 
-| 名字     | 数据类型 | 是否为空 | 键  | 说明     |
-| -------- | -------- | -------- | --- | -------- |
-| UID      | int      | NO       | PRI | 用户编号 |
-| BID      | int      | NO       | PRI | 图书编号 |
-| OverDate | int      | NO       |     | 超期天数 |
-| Penalty  | float    | NO       |     | 处罚金额 |
-
-#### 管理员表（Manager）
-
-| 名字   | 数据类型 | 是否为空 | 键  | 说明       |
-| ------ | -------- | -------- | --- | ---------- |
-| MID    | int      | NO       | PRI | 管理员编号 |
-| MName  | char(20) | NO       |     | 管理员姓名 |
-| MPhone | char(12) | NO       |     | 管理员电话 |
+| 名字      | 数据类型 | 是否为空 | 键  | 说明       |
+| --------- | -------- | -------- | --- | ---------- |
+| mng_ID    | int      | NO       | PRI | 管理员编号 |
+| mng_name  | char(20) | NO       |     | 管理员姓名 |
+| mng_phone | char(12) | NO       |     | 管理员电话 |
