@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <title>注册</title>
+</head>
+<body>
+    <div id="header">
+        <cmheader></cmheader>
+    </div>
+    <!-- <h1 class="tcenter">创建您的 AHNU ID</h1> -->
+
+    <form class="container container-center">
+        <div class="info-group">
+            <div class="form-group">
+                <input type="text" name="stu-number" class="form-control input-lg" placeholder="学号">
+                <div id="stu-number-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     学号不能为空
+                </div>
+                <div id="stu-number-repeat-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     学号已存在
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="name" class="form-control input-lg" placeholder="姓名">
+                <div id="name-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     姓名不能为空
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control input-lg" placeholder="密码">
+                <div id="password-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     密码不能为空
+                </div>
+            </div>
+        </div>
+
+        <div class="info-group">
+            <div class="form-group">
+                <select name="sex" id="input" class="form-control input-lg">
+                    <option value="">-- 选择你的性别 --</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+                <div id="sex-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>   
+                     性别不能为空
+                </div>
+            </div>
+            <div class="form-group">
+                <input data-rule="min:2015|max:2019|numeric:true" type="text" name="grade" class="form-control input-lg" placeholder="年级(2015-2019)">
+                <div id="grade-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     年级不能为空
+                </div>
+                <div id="grade-rule-error" class="error alert alert-danger" role="alert"> 年级只可以填2015-2019的数字</div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="pro" class="form-control input-lg" placeholder="专业">
+                <div id="pro-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    专业不能为空
+                </div>
+            </div>
+        </div>
+
+        <div class="info-group">
+            <div class="form-group">
+                <input type="text" name="phone" class="form-control input-lg" placeholder="手机号">
+                <div id="phone-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    手机号不能为空
+                </div>
+                <div id="phone-repeat-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    手机号已存在
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control input-lg" placeholder="电子邮箱">
+                <div id="email-empty-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    电子邮箱不能为空
+                </div>
+                <div id="email-repeat-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    电子邮箱已存在
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-lg" type="submit">继续</button>
+        </div>
+    </form>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../js/vheader.js"></script>
+    <script src="../js/validator.js"></script>
+    <script src="../js/input.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>

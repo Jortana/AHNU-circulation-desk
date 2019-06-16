@@ -4,9 +4,15 @@ use phpwork_bandr;
 create table `bar_user`
 (
     `user_ID` int unsigned not null auto_increment primary key comment '用户编号',
-    `user_pass` varchar(255) not null comment '密码',
+    `stu_number` char(12) not null comment '学号',
+    `user_phone` char(12) not null comment '用户手机号',
+    `user_email` varchar(255) not null comment '用户邮箱',
+    `user_pass` char(50) not null comment '密码',
 
-    unique `uniq_uid` (`user_ID`)
+    unique `uniq_uid` (`user_ID`),
+    index `idx_snumber` (`stu_number`),
+    index `idx_uphone` (`user_phone`),
+    index `idx_uemail` (`user_email`),
 ) engine = InnoDB charset=utf8 comment = '用户信息表';
 
 create table `bar_reader`
