@@ -86,6 +86,8 @@
         $result['code'] = '0';
         $result['msg'] = '注册成功';
     }
+
+    // 还要写另一张表的
     
     echo json_encode($result);
     $conn->close();
