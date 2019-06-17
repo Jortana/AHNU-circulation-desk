@@ -4,6 +4,7 @@
         if ($conn->connect_error) {
             throw new Exception("Could not connect to database.");
         } else {
+            $conn->set_charset("utf8");
             return $conn;
         }
     }

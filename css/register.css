@@ -1,6 +1,7 @@
 h1 {
     font-size: 40px;
     font-weight: 600;
+    margin-top: 30px;
 }
 
 .input-lg {
@@ -8,21 +9,6 @@ h1 {
     font-size: 1.2em;
 }
 
-.info-group {
-    padding: 30px 0 20px;
-    border-bottom: 1px solid #e7e7e8;
-}
-
 button {
     margin-top: 20px;
-}
-
-.error {
-    text-align: left;
-    display: none;
-}
-
-.alert {
-    padding: 6px;
-    margin-top: 6px;
 }

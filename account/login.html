@@ -6,28 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>登录</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-    <div class="col-md-12">
-        <div class="container" id="login">
-            <form id="log-form">
-                <h2 id="h2-login">登录</h2>
-                <div class="form-group">
-                    <input class="form-underline" id="loginID" name="loginID" type="text" placeholder="学号、电子邮件或电话">
+    <header id="header">
+        <cmheader></cmheader>
+    </header>
+
+    <div id="login" class="container container-center">
+        <h1>登录</h1>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control input-lg" id="login-id" placeholder="学号、电子邮件或手机号">
+                <div id="id-not-exist-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     用户名不存在
                 </div>
-                <div>
-                    <small>
-                        没有账户？<a href="">创建一个！</a>
-                    </small>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control input-lg" id="password" placeholder="密码">
+                <div id="id-or-pass-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     用户名或密码错误
                 </div>
-                <div class="btn-login">
-                    <button type="submit" class="btn btn-block btn-primary btn-rect">下一步</button>
-                </div>
-            </form>
-        </div>       
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit" disabled="disabled">继续</button>
+        </form>
     </div>
+    
     <script src="../lib/jquery.js"></script>
+    <script src="../lib/vue.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/vheader.js"></script>
 </body>
 </html>

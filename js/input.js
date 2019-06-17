@@ -82,6 +82,7 @@ $(function () {
 
         function listen() {
             $ele.on('blur', function () {
+                me.is_empty();
                 var valid = me.validator.validate_min(me.get_val());
                 if (valid)
                     $rule_error_ele.hide();

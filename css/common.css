@@ -3,8 +3,32 @@
     max-width: 500px;
     margin: auto;
     overflow: hidden;
+    margin-bottom: 40px;
 }
 
 .tcenter {
     text-align: center;
+}
+
+.btn-rect {
+    border-radius: 0;
+}
+
+.info-group {
+    padding: 30px 0 20px;
+    border-bottom: 1px solid #e7e7e8;
+}
+
+.error {
+    text-align: left;
+    display: none;
+}
+
+.alert {
+    padding: 6px;
+    margin-top: 6px;
+}
+
+.hide {
+    display: none;
 }

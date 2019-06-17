@@ -28,7 +28,7 @@ $(function () {
             return;
         }
 
-        // go_ajax();
+        go_ajax();
     })
 
     function go_ajax() {
@@ -46,13 +46,16 @@ $(function () {
                 result = eval('(' + result + ')');
                 var code_arr = result.code.split("|"),
                     msg_arr = result.msg.split("|");
-                console.log(code_arr);
-                console.log(msg_arr);
+                
+                // 测试用的console
+                // console.log(code_arr);
+                // console.log(msg_arr);
 
                 for (var i=0; i<code_arr.length; i++) {
                     switch(code_arr[i]) {
                         case '0':
                             alert('注册成功');
+                            window.location('../account/login.html')
                             break;
                         case '1':
                             $('#stu-number-repeat-error').show();
