@@ -40,13 +40,17 @@ create table `bar_book`
     `book_name` varchar(255) not null comment '书名',
     `book_author` varchar(50) not null comment '作者',
     `book_pub` varchar(50) not null comment '出版社',
-    `book_cate` varchar(20) not null comment '分类',
+    `book_cate` varchar(30) not null comment '分类',
     `book_date` datetime not null comment '入库时间',
+    `book_borrow` bool not null comment '是否借出',
+    `book_times` int unsigned default 0 comment '借出次数',
 
     unique `uniq_bid` (`book_ID`),
     index `idx_bname` (`book_name`),
     index `idx_author` (`book_author`),
-    index `idx_cate` (`book_cate`)
+    index `idx_cate` (`book_cate`),
+    index `idx_borrow` (`book_borrow`),
+    index `idx_times` (`book_times`)
 ) engine = InnoDB charset=utf8 comment = '图书信息表';
 
 create table `bar_borrow`

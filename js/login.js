@@ -1,5 +1,15 @@
 $(function () {
     'use strict';
+    // 先判断是否已登录
+    // 登录界面先隐藏
+    var info = is_login();
+    if (info !== 0) {
+        alert("您已登录，请勿重复登录");
+        window.location.href="../index.html";
+    } else {
+        // 判定为未登录再显示登录界面
+        $('body').removeClass('hide');
+    }
 
     // 设置.active
     $('.navbar #goto-login').addClass('active');
@@ -64,5 +74,26 @@ $(function () {
                 }
             },
         });
+    }
+
+    function is_login() {
+        var info;
+    
+        $.ajax({
+            type: "GET",
+            url: "../php/is_login.php",
+            // 这里一定要加下面这一句，不然无返回值，又因为是初始化页面的函数，所以同步也不是很影响用户体验
+            async : false,
+            success: function (response) {
+                response = JSON.parse(response);
+                if (response.logged === true) {
+                    info = response.info;
+                } else {
+                    info = 0;
+                }
+            }
+        });
+        
+        return info;
     }
 })

@@ -69,8 +69,10 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 | book_name   | varchar(255) | NO       |     | 书名     |
 | book_author | varchar(50)  | NO       |     | 作者     |
 | book_pub    | varchar(50)  | NO       |     | 出版社   |
-| book_cate   | varchar(20)  | NO       |     | 分类     |
+| book_cate   | varchar(30)  | NO       |     | 分类     |
 | book_date   | datetime     | NO       |     | 入库时间 |
+| book_borrow | bool         | NO       |     | 是否借出 |
+| book_times  | int          | NO       |     | 借出次数 |
 
 #### 4.图书借还信息表（Borrow）
 

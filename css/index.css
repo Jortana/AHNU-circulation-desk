@@ -1,0 +1,12 @@
+h1 {
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+#search {
+    margin-top: 50px;
+}
+
+.container-center {
+    min-height: 200px;
+}

@@ -21,7 +21,6 @@ Vue.component('cmheader', {
                     </ul>
                     <ul id="nav-right-login" class="nav navbar-nav navbar-right hide">
                         <li id="info"></li>
-                        <li id="goto-home"><a href="#">设置</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,9 +47,14 @@ Vue.component('indexheader', {
                         <li id="goto-login"><a href="account/login.html">登录</a></li>
                         <li id="goto-register"><a href="account/register.html">注册</a></li>
                     </ul>
-                    <ul id="nav-right-login" class="nav navbar-nav navbar-right hide">
-                        <li id="info" class="no-grey"></li>
-                        <li id="goto-home"><a href="#">设置</a></li>
+                    <ul id="nav-right-login" class="nav navbar-nav navbar-right dropdown hide">
+                        <li id="info" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></li>
+                        <ul id="account-menu" class="dropdown-menu text-right">
+                            <li><a href="#">历史纪录</a></li>
+                            <li><a href="#">个人信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a id="logout" href="#">退出</a></li>
+                        </ul>
                     </ul>
                 </div>
             </div>

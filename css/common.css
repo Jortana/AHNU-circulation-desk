@@ -32,3 +32,11 @@
 .hide {
     display: none;
 }
+
+.pointer {
+    cursor:pointer;
+}
+
+.text-right {
+    text-align: right;
+}
