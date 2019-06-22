@@ -93,3 +93,4 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 | mng_ID    | int      | NO       | PRI | 管理员编号 |
 | mng_name  | char(20) | NO       |     | 管理员姓名 |
 | mng_phone | char(12) | NO       |     | 管理员电话 |
+
