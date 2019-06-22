@@ -35,21 +35,14 @@ $(function () {
         });
     }
     // 设置.active
-    $('.navbar #goto-index').addClass('active');
+    set_active("index");
 
-    // 搜索下拉菜单的设置
-    var search_type = $('#search_type'),
-        $select_menu = $('.select-menu');
+    // 监听搜索下拉栏事件
+    listen_select();
+    // 在搜索空字符串时，阻止submit
+    prevent_null();
 
-    // 选出搜索分类的条目
-    $select_menu.each(function (index, node) {
-        $(this).on('click', function () {
-            $('#search-type').text($(this).text());
-            $('#hidden-type').attr('value', $(this).text());
-        });
-    });
-
-    // 这是一条重复的函数，但是似乎不能存在其他文件中然后引用，因为index也用了
+    // 这是一条重复的函数，但是似乎不能存在其他文件中然后引用，因为borrow和return也要用
     // 这样的目录结构无法确定url
     function is_login() {
         var info;

@@ -15,28 +15,31 @@
     </div>
 
     <h1 class="tcenter">欢迎使用图书管理系统</h1>
-    <form id="search" class="container-center">
-        <div class="input-group input-group-lg">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span id="search-type">书名</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a id="select-book" class="pointer select-menu">书名</a></li>
-                    <li><a id="select-author" class="pointer select-menu">作者</a></li>
-                    <li><a id="select-cate" class="pointer select-menu">分类</a></li>
-                </ul>
+    <!-- 搜索框也可以放到vue里，可以考虑优化 -->
+    <div class="col-xs-12">
+        <form action="b_and_r/borrow.html" method="GET" id="search" class="container-center form-group">
+            <div class="input-group input-group-lg">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span id="search-type">书名</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a id="select-name" class="pointer select-menu">书名</a></li>
+                        <li><a id="select-author" class="pointer select-menu">作者</a></li>
+                        <li><a id="select-cate" class="pointer select-menu">分类</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="type" id="hidden-type" class="form-control" value="name">
+                <input type="text" name="q" id="query" class="form-control" placeholder="搜索你想查询的图书、作者、分类">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="search-submit" type="submit" aria-label="go-search">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </span>
             </div>
-            <input type="hidden" name="search-type" id="hidden-type" class="form-control" value="书名">
-            <input type="text" class="form-control" id="" placeholder="搜索你想查询的图书、作者、分类">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" aria-label="go-search">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </button>
-            </span>
-        </div>
-    </form>
+        </form>
+    </div>
  
     <script src="lib/vue.js"></script>
     <script src="lib/jquery.js"></script>

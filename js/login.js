@@ -12,7 +12,7 @@ $(function () {
     }
 
     // 设置.active
-    $('.navbar #goto-login').addClass('active');
+    set_active("login");
     
     // 选中三个input
     var $ipt_id = $('#login-id'),
@@ -59,7 +59,18 @@ $(function () {
                 response = JSON.parse(response);
                 if (response.success == "1") {
                     alert("登录成功");
-                    window.location.href = '../index.html';
+                    // 判断上一个页面在哪
+                    var search_info = window.location.search;
+                    if (search_info.indexOf("?") != -1) {   
+                        var from = get_query_string('f');
+                        if (from == 'b') {
+                            var length = search_info.length;
+                                search_info = search_info.substr(0, length-4);
+                            window.location.href = '../b_and_r/borrow.html' + search_info;
+                        }
+                    } else {
+                        window.location.href = '../index.html';
+                    }
                 } else if (response.code == '-1') {
                     alert(response.msg)
                 } else if (response.code == '-2') {

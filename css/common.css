@@ -40,3 +40,13 @@
 .text-right {
     text-align: right;
 }
+
+#div-results {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style: none;
+}

@@ -6,7 +6,7 @@ $(function () {
         $form = $('form');
 
     // 设置.active
-    $('.navbar #goto-register').addClass('active');
+    set_active("register");
 
     // 获取页面中的input
     $inputs.each(function (index, node) {
@@ -55,7 +55,7 @@ $(function () {
                     switch(code_arr[i]) {
                         case '0':
                             alert('注册成功');
-                            window.location('../account/login.html')
+                            window.location.href('../account/login.html');
                             break;
                         case '1':
                             $('#stu-number-repeat-error').show();

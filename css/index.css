@@ -1,6 +1,6 @@
 h1 {
     font-weight: 600;
-    margin-top: 50px;
+    margin-top: 10%;
 }
 
 #search {
@@ -8,5 +8,6 @@ h1 {
 }
 
 .container-center {
-    min-height: 200px;
+    overflow: visible;
+    max-width: 700px;
 }

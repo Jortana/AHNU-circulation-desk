@@ -1,0 +1,23 @@
+.container-center {
+    overflow: visible;
+    max-width: 700px;
+    margin-top: 20px;
+}
+
+.panel {
+    overflow: hidden;
+}
+
+.panel-heading {
+    font-size: 1.2em;
+    line-height: 2em;
+}
+
+.nav-center {
+    text-align: center;
+}
+
+.btn-borrow {
+    width: 6em;
+    margin-left: 1em;
+}

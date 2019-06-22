@@ -65,9 +65,7 @@ create table `bar_borrow`
 
     primary key (`user_ID`, `book_ID`, `br_date`),
     foreign key (`user_ID`) references `bar_user`(`user_ID`),
-    foreign key (`book_ID`) references `bar_book`(`book_ID`),
-
-    unique `uniq_uid` (`user_ID`)
+    foreign key (`book_ID`) references `bar_book`(`book_ID`)
 ) engine = InnoDB charset=utf8 comment = '图书借还信息表';
 
 create table `bar_manager`
