@@ -62,6 +62,7 @@ create table `bar_borrow`
     `act_date` datetime comment '实际归还时间',
     `over_date` int unsigned default 0 comment '超期天数',
     `penalty` float  default 0 comment '处罚金额',
+    `clear` bool  default 0 comment '是否缴纳处罚',
 
     primary key (`user_ID`, `book_ID`, `br_date`),
     foreign key (`user_ID`) references `bar_user`(`user_ID`),

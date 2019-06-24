@@ -48,14 +48,12 @@ $(function () {
 
         data['login-id'] = $ipt_id.val();
         data['password'] = $ipt_pass.val();
-        console.log(data);
 
         $.ajax({
             type: "POST",
             url: "../php/login.php",
             data: data,
             success: function (response) {
-                console.log(response);
                 response = JSON.parse(response);
                 if (response.success == "1") {
                     alert("登录成功");
@@ -67,6 +65,8 @@ $(function () {
                             var length = search_info.length;
                                 search_info = search_info.substr(0, length-4);
                             window.location.href = '../b_and_r/borrow.html' + search_info;
+                        } else if (from == 'r') {
+                            window.location.href = '../b_and_r/return.html';
                         }
                     } else {
                         window.location.href = '../index.html';

@@ -15,6 +15,10 @@ $(function () {
     prevent_null();
 
     if ((type != null) && (q != null)) {
+        // 这里本来写的时候想好要返回data,然后用其他的函数做数据输出和其他的工作
+        // 但是写着写着就写下去了
+        // 导致go_search()这个函数有点臃肿了
+        // 也是一个可以优化的地方
         data = go_search(type, q, offset);
         $('.nav-center').show();
     }
@@ -54,12 +58,11 @@ $(function () {
                 }
                 $.each(response.data, function () {
                     // 显示10条结果
-                    var $li = $('<li class="li_book_info"></li>')
+                    var $li = $('<li class="li_book_info"></li>'),
                         $panel = $('<div class="panel panel-info"></div>'),
                         $pheading = $('<div class="panel-heading"></div>'),
                         $pbody = $('<div class="panel-body row"></div>'),
                         $pfooter = $('<div class="panel-footer row"></div>'),
-                        $div = $(''),
                         $author = '<div class="col-xs-4">作者：' + this.author + '</div>',
                         $cate = '<div class="col-xs-4">分类：' + this.cate + '</div>',
                         $pub = '<div class="col-xs-4">出版社：' + this.pub + '</div>',
@@ -235,15 +238,15 @@ $(function () {
         borrow_ajax(data);
     }
 
+    // 借书的请求
     function borrow_ajax(data) {
         $.ajax({
             type: "post",
             url: "../php/borrow.php",
             data: data,
             success: function (response) {
-                // response = JSON.parse(response);
-                console.log(response);
-                if (response.code == 0) {
+                response = JSON.parse(response);
+                if (response.success == 1) {
                     alert("借阅成功");
                     window.location.reload();
                 } else {

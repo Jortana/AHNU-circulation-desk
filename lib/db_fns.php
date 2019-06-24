@@ -40,4 +40,51 @@
             return false;
         }
     }
+
+    // 确认有无超期未还书,有就返回TRUE,否则返回FALSE
+    function check_over_date($conn, $user_ID) {
+        $today = date('Y-m-d H:i:s');
+        $query = "select * from bar_borrow where user_ID = $user_ID and exp_date < '$today' and clear = 0;";
+        $result = $conn->query($query);
+        if ($result->num_rows > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    function check_over_number($conn, $user_ID) {
+        $query = "select * from bar_borrow where user_ID = $user_ID and act_date = '1000-01-01 00:00:00';";
+        $result = $conn->query($query);
+        if ($result->num_rows >= 3) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    function check_over_penalty($conn, $exp_date, $book_ID, $user_ID) {
+        $today = strtotime(date('Y-m-d H:i:s'));
+        $exp_date = strtotime($exp_date);
+        if ($today > $exp_date) {
+            $over_info = [];
+            // 超期未还
+            $diff = $today - $exp_date;
+            $over_days =abs(round($diff / 86400));
+            $penalty = $over_days * 0.02;
+            $query = "update bar_borrow set over_days = $over_days, penalty = $penalty
+                    where book_ID = $book_ID and user_ID = $user_ID and act_date = '1000-01-01 00:00:00';";
+            $result = $conn->query($query);
+            if ($result == FALSE) {
+                // 数据库错误
+                return -1;
+            } else {
+                $over_info['over_days'] = $over_days;
+                $over_info['penalty'] = $penalty;
+                return $over_info;
+            }
+        } else {
+            return 0;
+        }
+    }
 ?>

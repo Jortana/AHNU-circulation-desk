@@ -8,7 +8,7 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 * [x] 用户登陆页面
 * [x] 主页面
 * [x] 借书
-* [ ] 还书
+* [x] 还书
 * [ ] 个人信息管理
 * [ ] 系统说明
 * [ ] 验证码校验登录
@@ -73,20 +73,21 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 | book_pub    | varchar(50)  | NO       |     | 出版社   |
 | book_cate   | varchar(30)  | NO       |     | 分类     |
 | book_date   | datetime     | NO       |     | 入库时间 |
-| book_borrow | bool         | NO       |     | 是否借出 |
+| book_borrow | tinyint(1)   | NO       |     | 是否借出 |
 | book_times  | int          | NO       |     | 借出次数 |
 
 #### 4.图书借还信息表（Borrow）
 
-| 名字      | 数据类型 | 是否为空 | 键  | 说明         |
-| --------- | -------- | -------- | --- | ------------ |
-| user_ID   | int      | NO       | PRI | 用户编号     |
-| book_ID   | int      | NO       | PRI | 图书编号     |
-| br_date   | datetime | NO       | PRI | 借书时间     |
-| exp_date  | datetime | NO       |     | 预期归还时间 |
-| act_date  | datetime |          |     | 实际归还时间 |
-| over_date | int      | NO       |     | 超期天数     |
-| penalty   | float    | NO       |     | 处罚金额     |
+| 名字      | 数据类型   | 是否为空 | 键  | 说明         |
+| --------- | ---------- | -------- | --- | ------------ |
+| user_ID   | int        | NO       | PRI | 用户编号     |
+| book_ID   | int        | NO       | PRI | 图书编号     |
+| br_date   | datetime   | NO       | PRI | 借书时间     |
+| exp_date  | datetime   | NO       |     | 预期归还时间 |
+| act_date  | datetime   |          |     | 实际归还时间 |
+| over_date | int        | NO       |     | 超期天数     |
+| penalty   | float      | NO       |     | 处罚金额     |
+| clear     | tinyint(1) | NO       |     | 是否缴纳处罚 |
 
 #### 5.管理员表（Manager）
 
