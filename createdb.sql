@@ -73,5 +73,7 @@ create table `bar_manager`
 (
     `mng_ID` int unsigned not null auto_increment primary key comment '管理员编号',
     `mng_name` char(20) not null comment '管理员姓名',
-    `mng_phone` char(12) not null comment '管理员电话'
+    `mng_email` varchar(255) not null comment '管理员邮箱',
+    `mng_phone` char(12) not null comment '管理员电话',
+    `mng_pass` char(50) not null comment '管理员密码'
 ) engine = InnoDB charset=utf8 comment = '管理员表';

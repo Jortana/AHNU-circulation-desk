@@ -46,16 +46,11 @@ $(function () {
                 result = eval('(' + result + ')');
                 var code_arr = result.code.split("|"),
                     msg_arr = result.msg.split("|");
-                
-                // 测试用的console
-                // console.log(code_arr);
-                // console.log(msg_arr);
-
                 for (var i=0; i<code_arr.length; i++) {
                     switch(code_arr[i]) {
                         case '0':
                             alert('注册成功');
-                            window.location.href('../account/login.html');
+                            window.location.href = '../account/login.html';
                             break;
                         case '1':
                             $('#stu-number-repeat-error').show();

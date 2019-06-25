@@ -13,6 +13,7 @@ function render_header() {
 
     if (info !== 0) {
         // 已登录
+        nav_search_need_return();
         var info_arr = info.split("|");
         var name = info_arr[0],
             id = info_arr[1],
@@ -157,4 +158,36 @@ function prevent_null() {
             e.preventDefault();
         }
     });
+}
+
+function nav_search_need_return() {
+    $.ajax({
+        type: "get",
+        url: "../php/search_need_return.php",
+        success: function (response) {
+            response = JSON.parse(response);
+            var today = new Date(),
+                need_return = 0;
+            $.each(response.data, function() { 
+                var exp_date = new Date(this.exp_date),
+                    diff = date_diff(today, exp_date);
+                if (diff <= 24) {
+                    need_return += 1;
+                }
+            });
+
+            if (need_return > 0) {
+                $('#need-return').text(need_return);
+            }
+        }
+    });
+}
+
+function date_diff(date1, date2) {
+    var stamp1 = date1.getTime(),
+        stamp2 = date2.getTime(),
+        diff = Math.abs(stamp1 - stamp2);
+    diff = diff / (1000 * 60 * 60);
+
+    return diff;
 }

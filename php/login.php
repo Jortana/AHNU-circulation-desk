@@ -35,7 +35,7 @@
             if ($isvalid) {
                 // 密码正确,写入$_SESSION['info'];
                 write_to_session($conn, $user_ID);
-            };
+            }
 
             // 无论正确与否都可以输出并退出脚本了
             echo json_encode($response);
@@ -59,7 +59,7 @@
             if ($isvalid) {
                 // 密码正确,写入$_SESSION['info'];
                 write_to_session($conn, $user_ID);
-            };
+            }
 
             // 无论正确与否都可以输出并退出脚本了
             echo json_encode($response);
@@ -73,26 +73,47 @@
             $stmt->bind_result($user_ID, $real_pass);
             $stmt->execute();
             $stmt->fetch();
+            $stmt->close();
             if ($real_pass) {
                 // 确实是用手机号登录,用户存在
                 $isvalid = validate($real_pass, $password, $response);
                 if ($isvalid) {
                     // 密码正确,写入$_SESSION['info'];
                     write_to_session($conn, $user_ID);
-                };
+                }
     
                 // 无论正确与否都可以输出并退出脚本了
                 echo json_encode($response);
                 $conn->close();
                 exit();
             } else {
-                // 用户不存在
-                $response['code'] = '-2';
-                $response['msg'] = '用户不存在';
+                // 验证是否为管理员
+                $query = "select mng_ID, mng_pass, mng_name from bar_manager where mng_nick = ? or mng_phone = ?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param('ss', $login_id, $login_id);
+                $stmt->bind_result($mng_ID, $real_pass, $mng_name);
+                $stmt->execute();
+                $stmt->fetch();
+                if ($real_pass) {
+                    $isvalid = validate($real_pass, $password, $response);
+                    if ($isvalid) {
+                        // 密码正确,写入$_SESSION['info'];
+                        $_SESSION['info'] = $mng_name.'|'.$mng_ID.'|'.'admin';
+                        $response['mng'] = '1';
+                    }
 
-                echo json_encode($response);
-                $conn->close();
-                exit();
+                    echo json_encode($response);
+                    $conn->close();
+                    exit();
+                } else {
+                    // 用户不存在
+                    $response['code'] = '-2';
+                    $response['msg'] = '用户不存在';
+
+                    echo json_encode($response);
+                    $conn->close();
+                    exit();
+                }   
             }
         }
     }

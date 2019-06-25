@@ -55,11 +55,14 @@ $(function () {
             data: data,
             success: function (response) {
                 response = JSON.parse(response);
-                if (response.success == "1") {
+                if (response.success == '1') {
                     alert("登录成功");
+                    if (response.mng == '1') {
+                        window.location.href = '../admin/public.html';
+                    }
                     // 判断上一个页面在哪
                     var search_info = window.location.search;
-                    if (search_info.indexOf("?") != -1) {   
+                    if (search_info.indexOf('?') != -1) {   
                         var from = get_query_string('f');
                         if (from == 'b') {
                             var length = search_info.length;
@@ -67,7 +70,9 @@ $(function () {
                             window.location.href = '../b_and_r/borrow.html' + search_info;
                         } else if (from == 'r') {
                             window.location.href = '../b_and_r/return.html';
-                        }
+                        } else if (from == 'p'){
+                            window.location.href = '../admin/public.html'; 
+                        }                        
                     } else {
                         window.location.href = '../index.html';
                     }

@@ -1,0 +1,38 @@
+.info-container {
+    max-width: 800px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.subtitle {
+    font-weight: 400;
+    color: #666;
+}
+
+h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
+
+.info {
+    font-size: 18px;
+    color: #333;
+}
+
+.div-info {
+    margin-bottom: 30px;
+}
+
+button {
+    margin-top: 18px;
+}
+
+#ch-pass {
+    margin: 0;
+    padding: 0;
+}
+
+.no-border {
+    border: none;
+}
+

@@ -50,3 +50,14 @@
 ul {
     list-style: none;
 }
+
+.title {
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.title h1 {
+    font-weight: 600;
+}

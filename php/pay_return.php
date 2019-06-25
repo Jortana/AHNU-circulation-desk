@@ -41,9 +41,15 @@
             echo json_encode($response);
             exit();
         } else {
-            $response['seccess'] = '1';
-            $response['code'] = '0';
-            $response['msg'] = '付费和付款成功';
+            $pun_query = "update bar_reader set pun_time = pun_time + 1 where user_ID = $user_ID;";
+            $pun_result = $conn->query($pun_query);
+            if ($pun_result == TRUE) {
+                $response['seccess'] = '1';
+                $response['code'] = '0';
+                $response['msg'] = '付费和付款成功';
+            } else {
+                $response['msg'] = '数据库错误';                
+            }
             
             echo json_encode($response);
             exit();

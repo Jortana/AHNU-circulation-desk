@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人信息</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+    <div id="header">
+        <!-- 先判断是否登录,再添加页头 -->
+    </div>
+    
+    <div class="title">
+        <h1>个人信息</h1>
+    </div>
+    
+    <div class="col-xs-12">
+        <div id="div-results">
+            <ul id="ul-results" class="list-group row">
+                
+            </ul>
+        </div>
+    </div>
+    
+    <div id="account" class="container info-container hide"> 
+        <div class="col-xs-3">
+            <h1 class="subtitle">账户</h1>
+        </div>
+        <div id="ch-div" class="col-xs-4">
+            <div class="div-info">
+                <h3>学号</h3>
+                <div id="stu-number" class="info"></div>
+            </div>
+            <div class="div-info">
+                <h3>姓名</h3>
+                <div id="name" class="info"></div>
+            </div>
+            <div class="div-info">
+                <h3>性别</h3>
+                <div id="sex" class="info"></div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="div-info">
+                <h3>年级</h3>
+                <div id="grade" class="info"></div>
+            </div>
+            <div class="div-info">
+                <h3>专业</h3>
+                <div id="pro" class="info"></div>
+            </div>
+            <div class="div-info">
+                <h3>联络方式</h3>
+                <div id="contact" class="info">
+                    <div id="phone"></div>
+                    <div id="email"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-1">
+            <button type="button" id="ch-account" class="btn btn-default">编辑</button>
+        </div>
+    </div>
+
+    <div id="security" class="container info-container hide"> 
+        <div class="col-xs-3">
+            <h1 class="subtitle">安全</h1>
+        </div>
+        <div class="col-xs-4">
+            <div class="div-info">
+                <h3>密码</h3>
+                <div>
+                    <button type="button" id="ch-pass" class="btn btn-link">更改密码</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4"></div>
+        <div class="col-xs-1"></div>
+    </div>
+
+    <div id="b-and-r" class="container info-container hide no-border"> 
+        <div class="col-xs-3">
+            <h1 class="subtitle">借阅</h1>
+        </div>
+        <div class="col-xs-4">
+            <div class="div-info">
+                <h3>借书次数</h3>
+                <div id="borrow-times" class="info"></div>
+            </div>
+            <div class="div-info">
+                <h3>超期次数</h3>
+                <div id="over-times" class="info"></div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="div-info">
+                <h3>信用等级</h3>
+                <div id="inter" class="info"></div>
+            </div>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+    
+    
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.js"></script>
+    <script src="../js/common_fns.js"></script>
+    <script src="../js/vheader.js"></script>
+    <script src="../js/account.js"></script>
+</body>
+</html>

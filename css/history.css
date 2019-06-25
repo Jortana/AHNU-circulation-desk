@@ -10,8 +10,3 @@
     font-size: 1.2em;
     line-height: 2em;
 }
-
-.btn-return, .btn-pay {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}

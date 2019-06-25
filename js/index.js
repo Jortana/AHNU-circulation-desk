@@ -3,10 +3,13 @@ $(function () {
 
     // 判断是否登录
     var info = is_login();
-
     if (info !== 0) {
-        // 已登录
         var info_arr = info.split("|");
+    }
+
+    if (info !== 0 && info_arr[2] != 'admin') {
+        // 已登录,且不是管理员
+        index_nav_search_need_return();
         var name = info_arr[0],
             id = info_arr[1],
             $header = $('#header');
@@ -26,13 +29,26 @@ $(function () {
         li_info.prepend(a_name);
         nav_login.removeClass("hide");
         listen();
-    } else {
+    } else if (info == 0) {
         var $header = $('#header');
         // 渲染一个header
         $header.append("<indexheader></indexheader>");
         new Vue({
             el: '#header',
         });
+    } else {
+        var $header = $('#header'),
+            name = info_arr[0];
+            
+        // 渲染一个header
+        $header.append("<adminheader></adminheader>");
+        new Vue({
+            el: '#header',
+        });
+        var li_info = $('#info'),
+            a_name = '<a href="#" style="color: #fff">' + name + '</a>';
+        li_info.prepend(a_name);
+        listen();
     }
     // 设置.active
     set_active("index");
@@ -61,7 +77,6 @@ $(function () {
                 }
             }
         });
-        
         return info;
     }
 
@@ -98,6 +113,29 @@ $(function () {
                     window.location.reload();
                 } else {
                     alert("您还未登录");
+                }
+            }
+        });
+    }
+
+    function index_nav_search_need_return() {
+        $.ajax({
+            type: "get",
+            url: "php/search_need_return.php",
+            success: function (response) {
+                response = JSON.parse(response);
+                var today = new Date(),
+                    need_return = 0;
+                $.each(response.data, function() { 
+                    var exp_date = new Date(this.exp_date),
+                        diff = date_diff(today, exp_date);
+                    if (diff <= 24) {
+                        need_return += 1;
+                    }
+                });
+
+                if (need_return > 0) {
+                    $('#need-return').text(need_return);
                 }
             }
         });

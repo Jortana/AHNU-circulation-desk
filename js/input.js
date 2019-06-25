@@ -57,7 +57,7 @@ $(function () {
         }
 
         function get_repeat_error() {
-            $_repeat_error = '#' + $ele.attr('name') + '-repeat-error';
+            $repeat_error = '#' + $ele.attr('name') + '-repeat-error';
         }
 
         function get_rule_error_ele() {
@@ -81,14 +81,17 @@ $(function () {
         }
 
         function listen() {
-            $ele.on('blur', function () {
+            $ele.on('blur', function() {
                 me.is_empty();
                 var valid = me.validator.validate_min(me.get_val());
                 if (valid)
                     $rule_error_ele.hide();
                 else
                     $rule_error_ele.show();
-            })
+            });
+            $ele.on('change', function() {
+                me.hide_repeat();
+            });
         }
 
         init();
