@@ -43,9 +43,22 @@
             </div>
         </form>
 
-        <div id="public">
-
-        </div>
+        <div id="public-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">公告</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="public"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">我知道了</button>
+                </div>
+                </div>
+            </div>
+        </div>    
     </div>
  
     <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>

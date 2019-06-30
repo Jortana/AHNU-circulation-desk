@@ -10,6 +10,8 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 * [x] 借书
 * [x] 还书
 * [x] 个人信息管理
+* [x] 管理员部分
+* [x] 公告
 * [ ] 系统说明
 * [ ] 验证码校验登录
 * [x] 模糊查询
@@ -98,3 +100,12 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 | mng_email | varchar(255) | NO       |     | 管理员邮箱 |
 | mng_phone | char(12)     | NO       |     | 管理员电话 |
 | mng_pass  | char(50)     | NO       |     | 管理员密码 |
+
+#### 6.公告表（Public）
+
+| 名字        | 数据类型 | 是否为空 | 键  | 说明       |
+| ----------- | -------- | -------- | --- | ---------- |
+| pub_ID      | int      | NO       | PRI | 公告编号   |
+| pub_content | text     | NO       |     | 公告内容   |
+| pub_mng     | int      | NO       |     | 发布管理员 |
+| pub_time    | datetime | NO       |     | 发布时间   |

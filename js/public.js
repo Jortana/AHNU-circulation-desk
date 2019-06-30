@@ -1,6 +1,7 @@
 $(function () {
     'use strict';
 
+    check_admin();
     var info = is_login();
     if (info == 0) {
         var $li = $('<li class="li_book_info"></li>'),
@@ -12,22 +13,26 @@ $(function () {
         $panel.append($pbody);
         $li.append($panel);
         $('#ul-results').append($li);
-    } else {
-        var info_arr = info.split("|"),
-            name = info_arr[0],
-            $header = $('#header');
-        
-        // 渲染一个header
-        $header.append("<adminheader></adminheader>");
-        new Vue({
-            el: '#header',
-        });
-        var li_info = $('#info'),
-            a_name = '<a href="#" style="color: #fff">' + name + '</a>';
-        li_info.prepend(a_name);
-        listen();
-        set_active("public");
-        add_url_info('p');
     }
+    render_header();
+    $('#public-form').on('submit', function(e) {
+        e.preventDefault();
+        go_public();
+    });
     
+    function go_public() {
+        var content = $('#public').val();
+        $.ajax({
+            type: "post",
+            url: "../php/public.php",
+            data: {
+                'content': content,
+            },
+            success: function (response) {
+                response = JSON.parse(response);
+                alert(response.msg);
+                window.location.reload();
+            }
+        });
+    }
 })

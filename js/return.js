@@ -12,6 +12,7 @@ $(function () {
         $li.append($panel);
         $('#ul-results').append($li);
     }
+    prevent_admin();
     render_header();
     set_active("return");
     add_url_info('r');
@@ -23,6 +24,10 @@ $(function () {
             url: "../php/search_need_return.php",
             success: function (response) {
                 response = JSON.parse(response);
+                if (response.code == '-10') {
+                    alert(response.msg);
+                    window.location.href = '../index.html';
+                }
                 display_return_info(response);
             }
         });

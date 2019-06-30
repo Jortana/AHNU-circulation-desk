@@ -14,6 +14,7 @@ $(function () {
     } else {
         $('.info-container').removeClass('hide');
     }
+    prevent_admin();
     render_header();
     get_account_info();
     $('#ch-account').on('click', function() {
@@ -30,6 +31,10 @@ $(function () {
             url: "../php/get_account_info.php",
             success: function (response) {
                 response = JSON.parse(response);
+                if (response.code == '-10') {
+                    alert(response.msg);
+                    window.location.href = '../index.html';
+                }
                 if (response.success != '1') {
                     alert(response.msg);
                 }

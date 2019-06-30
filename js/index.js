@@ -9,9 +9,27 @@ $(function () {
 
     if (info !== 0 && info_arr[2] != 'admin') {
         // 已登录,且不是管理员
+        render_user_interface();
+    } else if (info == 0){
+        // 未登录
+        render_no_login_interface();
+    } else {
+        // 管理员
+        render_admin_interface();
+    }
+    // 设置.active
+    set_active("index");
+    // 监听搜索下拉栏事件
+    listen_select();
+    // 监听公告
+    listen_public();
+    // 在搜索空字符串时，阻止submit
+    prevent_null();
+
+
+    function render_user_interface() {
         index_nav_search_need_return();
         var name = info_arr[0],
-            id = info_arr[1],
             $header = $('#header');
 
         // 渲染一个header
@@ -29,17 +47,20 @@ $(function () {
         li_info.prepend(a_name);
         nav_login.removeClass("hide");
         listen();
-    } else if (info == 0) {
+    }
+
+    function render_no_login_interface() {
         var $header = $('#header');
         // 渲染一个header
         $header.append("<indexheader></indexheader>");
         new Vue({
             el: '#header',
         });
-    } else {
+    }
+
+    function render_admin_interface() {
         var $header = $('#header'),
             name = info_arr[0];
-            
         // 渲染一个header
         $header.append("<adminheader></adminheader>");
         new Vue({
@@ -50,19 +71,12 @@ $(function () {
         li_info.prepend(a_name);
         listen();
     }
-    // 设置.active
-    set_active("index");
-
-    // 监听搜索下拉栏事件
-    listen_select();
-    // 在搜索空字符串时，阻止submit
-    prevent_null();
 
     // 这是一条重复的函数，但是似乎不能存在其他文件中然后引用，因为borrow和return也要用
     // 这样的目录结构无法确定url
     function is_login() {
         var info;
-    
+        
         $.ajax({
             type: "GET",
             url: "php/is_login.php",
@@ -137,6 +151,27 @@ $(function () {
                 if (need_return > 0) {
                     $('#need-return').text(need_return);
                 }
+            }
+        });
+    }
+
+    function listen_public() {
+        var $toggle = $('#show-public');
+        $toggle.on('click', function() {
+            show_public();
+            console.log('click');
+        });
+    }
+
+    function show_public() {
+        $.ajax({
+            type: "get",
+            url: "php/get_public.php",
+            success: function (response) {
+                response = JSON.parse(response);
+                var content = response.content;
+                $('#public').html(content);
+                $('#public-modal').modal('show');
             }
         });
     }

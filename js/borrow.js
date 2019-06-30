@@ -1,6 +1,7 @@
 $(function () {
     'use sctrict';
 
+    prevent_admin();
     $('.nav-center').hide();
     render_header();
     set_active("borrow");
@@ -45,6 +46,10 @@ $(function () {
             data: data,
             success: function (response) {
                 response = JSON.parse(response);
+                if (response.code == '-10') {
+                    alert(response.msg);
+                    window.location.href = '../index.html';
+                }
                 if (response.number <= 0) {
                     var $li = $('<li class="li_book_info"></li>'),
                         $panel = $('<div class="panel panel-danger"></div>'),

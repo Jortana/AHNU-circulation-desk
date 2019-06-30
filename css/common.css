@@ -16,7 +16,7 @@
 
 .info-group {
     padding: 30px 0 20px;
-    border-bottom: 1px solid #e7e7e8;
+    border-bottom: 1px solid #e7e7e5;
 }
 
 .error {
@@ -72,11 +72,11 @@ ul {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    -webkit-filter: blur(8px);
-    -moz-filter: blur(8px);
-    -o-filter: blur(8px);
-    -ms-filter: blur(8px);
-    filter: blur(8px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
 }
 
 .title h1 {

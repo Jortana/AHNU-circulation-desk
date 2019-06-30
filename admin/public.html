@@ -15,6 +15,7 @@
     </div>
     
     <div class="title">
+        <div class="bg"></div>
         <h1>发布公告</h1>
     </div>
     
@@ -26,12 +27,11 @@
         </div>
     </div>
     
-    <form>
-        <div class="input-group">
-            <textarea id="public" class="form-control" rows="3" required="required">
-                在这里填写公告
-            </textarea>
+    <form id="public-form">
+        <div class="form-group">
+            <textarea id="public" class="form-control" rows="10" placeholder="在这里填写公告"></textarea>
         </div>
+        <button type="submit" class="btn btn-block btn-primary">提交</button>
     </form>
     
     <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>

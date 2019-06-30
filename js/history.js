@@ -12,6 +12,7 @@ $(function () {
         $li.append($panel);
         $('#ul-results').append($li);
     }
+    prevent_admin();
     render_header();
     search_history();
 
@@ -21,6 +22,10 @@ $(function () {
             url: "../php/search_history.php",
             success: function (response) {
                 response = JSON.parse(response);
+                if (response.code == '-10') {
+                    alert(response.msg);
+                    window.location.href = '../index.html';
+                }
                 if (response.success != '1') {
                     alert(response.msg);
                     window.location.reload();

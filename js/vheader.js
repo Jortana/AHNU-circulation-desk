@@ -48,6 +48,7 @@ Vue.component('indexheader', {
                         <li id="goto-index"><a href="index.html">首页</a></li>
                         <li id="goto-borrow"><a href="b_and_r/borrow.html">借书</a></li>
                         <li id="goto-return"><a href="b_and_r/return.html">还书 <span id="need-return" class="badge"></span></a></li>
+                        <li id="goto-public"><a id="show-public">公告</a></li>
                     </ul>
                     <ul id="nav-right-nologin" class="nav navbar-nav navbar-right">
                         <li id="goto-login"><a href="account/login.html">登录</a></li>

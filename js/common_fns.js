@@ -191,3 +191,31 @@ function date_diff(date1, date2) {
 
     return diff;
 }
+
+function prevent_admin() {
+    $.ajax({
+        type: "get",
+        url: "../php/prevent_admin.php",
+        success: function (response) {
+            response = JSON.parse(response);
+            if (response.admin == '1') {
+                alert('管理员不能进这里');
+                window.location.href = '../index.html';
+            }
+        }
+    });
+}
+
+function check_admin() {
+    $.ajax({
+        type: "get",
+        url: "../php/prevent_admin.php",
+        success: function (response) {
+            response = JSON.parse(response);
+            if (response.admin != '1') {
+                alert('你没有权限');
+                window.location.href = '../index.html';
+            }
+        }
+    });
+}
