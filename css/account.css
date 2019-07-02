@@ -36,3 +36,14 @@ button {
     border: none;
 }
 
+#pass-input-div {
+    margin-top: 30px;
+}
+
+#confirm {
+    margin-top: 30px;
+}
+
+#cancle {
+    margin-top: 0px;
+}

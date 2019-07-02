@@ -29,7 +29,7 @@ $(function () {
 
     $ipt_submit.on('click', function(e) {
         e.preventDefault();
-        go_ajax();
+        validate_and_login();
     })
 
     function show_and_hide() {
@@ -43,7 +43,30 @@ $(function () {
         $('#id-or-pass-error').hide();
     }
 
-    function go_ajax() {
+    function validate_and_login() {
+        var data = grecaptcha.getResponse();
+        $.ajax({
+            type: "post",
+            url: "../php/recaptcha.php",
+            data: {
+                'data': data,
+            },
+            success: function (validate_response) {
+                validate_response = JSON.parse(validate_response);
+                if (validate_response.success == 1) {
+                    go_login();
+                } else if (validate_response.code = '-1') {
+                    alert('允许本次登录，但验证服务出错，请联系管理员，谢谢！');
+                    go_login();
+                } else {
+                    alert('非正常登录');
+                    window.location.href = '../index.html';
+                }
+            }
+        });
+    }
+
+    function go_login() {
         var data = {};
 
         data['login-id'] = $ipt_id.val();

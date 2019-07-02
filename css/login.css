@@ -4,8 +4,14 @@ h1 {
 
 .container-center {
     max-width: 400px;
+    padding-left: 3.5em;
 }
 
 form {
     margin-top: 30px;
+    width: 304px;
+}
+
+.form-group {
+    width: 304px;
 }

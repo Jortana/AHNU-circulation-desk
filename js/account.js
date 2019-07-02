@@ -17,13 +17,8 @@ $(function () {
     prevent_admin();
     render_header();
     get_account_info();
-    $('#ch-account').on('click', function() {
-        if ($(this).hasClass('btn-primary')) {
-            check_change();
-        } else {
-            display_change_form();
-        }
-    });
+    listen_and_display_change();
+    listen_change_pass();
 
     function get_account_info() {
         $.ajax({
@@ -145,5 +140,85 @@ $(function () {
             $btn_account.text('完成');
         }
         $btn_account.trigger('blur');
-    }  
+    }
+
+    function toggle_pass_input() {
+        var $input = $('#pass-input-div'),
+            $button = $('#pass-button');
+        
+        if ($input.hasClass('hide')) {
+            $input.removeClass('hide');
+            $button.removeClass('hide');
+        } else {
+            $input.addClass('hide');
+            $button.addClass('hide');
+        }
+    }
+
+    function listen_and_display_change() {
+        $('#ch-account').on('click', function() {
+            if ($(this).hasClass('btn-primary')) {
+                check_change();
+            } else {
+                display_change_form();
+            }
+        });
+    
+        $('#ch-pass').on('click', function() {
+            $('#pass-info').hide();
+            toggle_pass_input();
+        });
+    }
+
+    function listen_change_pass() {
+        $('#pass-input').on('change', function() {
+            var $confirm = $('#pass-confirm');
+            if ($confirm.val() != '') {
+                check_pass_same();
+            }
+        });
+
+        $('#pass-confirm').on('change', function() {
+            check_pass_same();
+        });
+        
+        $('#cancle').on('click', function() {
+            $('#pass-info').show();
+            toggle_pass_input();
+        });
+
+        $('#confirm').on('click', function() {
+            var newpass = $('#pass-input').val(),
+                confirm = $('#pass-confirm').val();
+            
+            if (newpass !== confirm) {
+                
+            }
+            $.ajax({
+                type: "post",
+                url: "url",
+                data: {
+                    'newpass': 
+                },
+                dataType: "dataType",
+                success: function (response) {
+                    
+                }
+            });
+        });
+    }
+
+    function check_pass_same() {
+        var newpass = $('#pass-input').val(),
+            confirm = $('#pass-confirm').val();
+        if (newpass !== confirm) {
+            $('#not-same').show();
+        } else {
+            $('#not-same').hide();
+        }
+
+        if (newpass == '' && confirm == '') {
+            $('#not-same').hide();
+        }
+    }
 })
