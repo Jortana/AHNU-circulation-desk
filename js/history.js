@@ -22,18 +22,28 @@ $(function () {
             url: "../php/search_history.php",
             success: function (response) {
                 response = JSON.parse(response);
-                if (response.code == '-10') {
-                    alert(response.msg);
-                    window.location.href = '../index.html';
-                }
                 if (response.success != '1') {
                     alert(response.msg);
-                    window.location.reload();
+                    window.location.href = "../index.html";
+                } else if(response.count == 0){
+                    display_no_history();
                 } else {
                     display_history(response);
                 }
             }
         });
+    }
+
+    function display_no_history() {
+        var $li = $('<li class="li_book_info"></li>'),
+            $panel = $('<div class="panel panel-info"></div>'),
+            $pheading = $('<div class="panel-heading">你还没有借过书</div>'),
+            $pbody = $('<div class="panel-body">去借点书看吧</div>');
+
+        $panel.append($pheading);
+        $panel.append($pbody);
+        $li.append($panel);
+        $('#ul-results').append($li);
     }
 
     function display_history(response) {

@@ -1,13 +1,7 @@
 <?php
-    function db_connect() {
-        @$conn = new mysqli('localhost', 'phpwork', 'upld', 'phpwork_bandr');
-        if ($conn->connect_error) {
-            throw new Exception("Could not connect to database.");
-        } else {
-            $conn->set_charset("utf8");
-            return $conn;
-        }
-    }
+    // 本来只是想存数据库的有关函数,后来索性直接往里面放,文件又写了很多了,就没改名字了
+    require("../../../../../phpworklib/db.php");
+    require("../../../../../phpworklib/neteast_mailer.php");
     
     // 查询是否有重复的学号
     function is_number_exist($conn, $number) {

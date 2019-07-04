@@ -64,17 +64,16 @@
     // 还有borrow表里的信息
     $borrow_query = "select over_days from bar_borrow where user_ID = $user_ID and act_date <> '1000-01-01 00:00:00';";
     $borrow_result = $conn->query($borrow_query);
+    // 这里如果select语句出错,用户会看到借书次数为0,且没有报错,待解决
     if ($borrow_result->num_rows > 0) {
         $account_info['borrow_time'] = $borrow_result->num_rows;
-        $response['success'] = '1';
-        $response['code'] = '0';
-        $response['msg'] = '查询成功';
     } else {
-        $response['msg'] = '数据库错误(borrow)';
-        echo json_encode($response);
-        exit();
+        $account_info['borrow_time'] = 0;
     }
     
+    $response['success'] = '1';
+    $response['code'] = '0';
+    $response['msg'] = '查询成功';
     $response['account_info'] = $account_info;
     echo json_encode($response);    
 ?>

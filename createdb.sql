@@ -8,6 +8,7 @@ create table `bar_user`
     `user_phone` char(12) not null comment '用户手机号',
     `user_email` varchar(255) not null comment '用户邮箱',
     `user_pass` char(50) not null comment '密码',
+    `pass_time` datetime comment '重置密码的时间',
 
     unique `uniq_uid` (`user_ID`),
     index `idx_snumber` (`stu_number`),

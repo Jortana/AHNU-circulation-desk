@@ -32,6 +32,13 @@
 
     $query = "select * from bar_borrow where user_ID = $user_ID and act_date <> '1000-01-01 00:00:00';";
     $result = $conn->query($query);
+    if ($result->num_rows <= 0) {
+        $response['success'] = '1';
+        $response['code'] = '0';
+        $response['msg'] = '查询成功';
+        echo json_encode($response);
+        exit();
+    }
     while ($row = $result->fetch_assoc()) {
         $data_item = [];
         $book_ID = $row['book_ID'];
@@ -52,10 +59,11 @@
         $data_item['pub'] = $info['book_pub'];
         
         array_push($response['data'], $data_item);
-        $response['success'] = '1';
-        $response['code'] = 0;
-        $response['msg'] = '查询成功';
+        $response['count'] += 1;
     }
-    
+    $response['success'] = '1';
+    $response['code'] = '0';
+    $response['msg'] = '查询成功';
     echo json_encode($response);
+    exit();
 ?>

@@ -18,7 +18,7 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 * [x] 快到期图书提醒
 * [x] 个人历史纪录
 * [ ] 统计模块
-* [ ] 通过邮箱找回密码（sendmail配置很久，收不到发出的邮件）
+* [x] 通过邮箱找回密码（使用了PHPMailer，简直是救星）
 
 项目中很多都可以用vue重构，但是因为不是很熟悉，为了不要让自己做的太慢，所以基本都是用jQuery。但是如果都用vue应该会精简很多
 
@@ -45,13 +45,14 @@ php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 
 #### 1.用户信息表（User）
 
-| 名字       | 数据类型     | 是否为空 | 键  | 说明       |
-| ---------- | ------------ | -------- | --- | ---------- |
-| user_ID    | int          | NO       | PRI | 用户编号   |
-| stu_number | char(12)     | NO       |     | 学号       |
-| user_phone | char(12)     | NO       |     | 用户手机号 |
-| user_email | varchar(255) | NO       |     | 用户邮箱   |
-| user_pass  | char(50)     | NO       |     | 密码       |
+| 名字          | 数据类型     | 是否为空 | 键  | 说明           |
+| ------------- | ------------ | -------- | --- | -------------- |
+| user_ID       | int          | NO       | PRI | 用户编号       |
+| stu_number    | char(12)     | NO       |     | 学号           |
+| user_phone    | char(12)     | NO       |     | 用户手机号     |
+| user_email    | varchar(255) | NO       |     | 用户邮箱       |
+| user_pass     | char(50)     | NO       |     | 密码           |
+| get_pass_time | datetime     |          |     | 重置密码的时间 |
 
 #### 2.读者信息表（Reader）
 

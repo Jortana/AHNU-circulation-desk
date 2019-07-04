@@ -3,8 +3,12 @@ h1 {
 }
 
 .container-center {
-    max-width: 400px;
+    max-width: 405px;
     padding-left: 3.5em;
+}
+
+#forget-pass {
+    text-align: center;
 }
 
 form {

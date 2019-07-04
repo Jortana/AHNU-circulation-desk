@@ -192,17 +192,23 @@ $(function () {
                 confirm = $('#pass-confirm').val();
             
             if (newpass !== confirm) {
-                
+                $('#not-same').show();
+                return;
             }
+
             $.ajax({
                 type: "post",
-                url: "url",
+                url: "../php/change_password.php",
                 data: {
-                    'newpass': 
+                    'newpass': newpass,
                 },
-                dataType: "dataType",
                 success: function (response) {
-                    
+                    response = JSON.parse(response);
+                    console.log(response);
+                    alert(response.msg);
+                    if (response.success == '1') {
+                        window.location.href = "../account/login.html";
+                    }
                 }
             });
         });
