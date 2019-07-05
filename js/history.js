@@ -64,7 +64,7 @@ $(function () {
             if (this.penalty > 0) {
                 $panel.addClass('panel-danger');
             } else {
-                $panel.addClass('panel-info');
+                $panel.addClass('panel-success');
             }
             
             $pheading.text(this.name);
