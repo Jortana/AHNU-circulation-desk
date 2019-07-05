@@ -2,7 +2,7 @@
 
 php程序设计课程大作业——基于PHP、MySQL的web端借还书系统
 
-本项目已部署，地址：[http://library.jortana.top//](http://library.jortana.top/)
+本项目已部署，地址：[http://library.jortana.top/](http://library.jortana.top/)
 
 ## TODO
 
