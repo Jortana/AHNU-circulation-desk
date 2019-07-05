@@ -21,7 +21,7 @@
     <form class="container container-center">
         <div class="info-group">
             <div class="form-group">
-                <input type="text" name="stu-number" class="form-control input-lg" placeholder="学号">
+                <input data-rule="maxlength:11|minlength:11" type="text" name="stu-number" class="form-control input-lg" placeholder="学号">
                 <div id="stu-number-empty-error" class="error alert alert-danger" role="alert">
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -31,6 +31,11 @@
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                      学号已存在
+                </div>
+                <div id="stu-number-rule-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     学号格式不正确
                 </div>
             </div>
             <div class="form-group">
@@ -65,7 +70,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <input data-rule="min:2015|max:2019|numeric:true" type="text" name="grade" class="form-control input-lg" placeholder="年级(2015-2019)">
+                <input data-rule="maxlength:4|minlength:4|min:2015|max:2019|numeric:true" type="text" name="grade" class="form-control input-lg" placeholder="年级(2015-2019)">
                 <div id="grade-empty-error" class="error alert alert-danger" role="alert">
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -78,23 +83,28 @@
                 <div id="pro-empty-error" class="error alert alert-danger" role="alert">
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    专业不能为空
+                     专业不能为空
                 </div>
             </div>
         </div>
 
         <div class="info-group">
             <div class="form-group">
-                <input type="text" name="phone" class="form-control input-lg" placeholder="手机号">
+                <input data-rule="maxlength:11|minlength:11" type="text" name="phone" class="form-control input-lg" placeholder="手机号">
                 <div id="phone-empty-error" class="error alert alert-danger" role="alert">
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    手机号不能为空
+                     手机号不能为空
                 </div>
                 <div id="phone-repeat-error" class="error alert alert-danger" role="alert">
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    手机号已存在
+                     手机号已存在
+                </div>
+                <div id="phone-rule-error" class="error alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                     手机号格式不正确
                 </div>
             </div>
             <div class="form-group">
@@ -102,12 +112,12 @@
                 <div id="email-empty-error" class="error alert alert-danger" role="alert">
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    电子邮箱不能为空
+                     电子邮箱不能为空
                 </div>
                 <div id="email-repeat-error" class="error alert alert-danger" role="alert">
                     <span class="sr-only">Error:</span>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    电子邮箱已存在
+                     电子邮箱已存在
                 </div>
             </div>
         </div>
