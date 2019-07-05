@@ -10,7 +10,7 @@
     $post = http_build_query(
         array (
             'response' => $data,
-            'secret' => '6Leum6sUAAAAAMk3NSWbsTtMdym-5yFuyHh9uh0o',
+            'secret' => '**********',
             'remoteip' => $_SERVER['REMOTE_ADDR']
         )
     );
